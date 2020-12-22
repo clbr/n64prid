@@ -68,10 +68,11 @@ void init_n64(void)
 int main(void)
 {
 	char buf[32];
-	u32 prid;
+	u32 prid, fpid;
 	asm("mfc0 %0, $15" : "=r" (prid) : :);
+	asm("cfc1 %0, $0" : "=r" (fpid) : :);
 
-	sprintf(buf, "prid 0x%x", prid);
+	sprintf(buf, "prid 0x%x fpid 0x%x", prid, fpid);
 
 	display_context_t disp;
 
